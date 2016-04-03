@@ -10,6 +10,12 @@
     "resources": {
         "media": [
             {
+                "file": "data/sad.png",
+                "name": "SAD",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
                 "file": "data/flower thing.png",
                 "name": "FLOWER",
                 "targetPlatforms": null,
