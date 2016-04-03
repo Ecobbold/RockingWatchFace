@@ -10,6 +10,12 @@
     "resources": {
         "media": [
             {
+                "file": "images/sad_BW.png",
+                "name": "SAD_BW",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
                 "file": "data/sad.png",
                 "name": "SAD",
                 "targetPlatforms": null,

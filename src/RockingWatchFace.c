@@ -15,9 +15,6 @@ static GBitmap *s_bitmap = NULL;
 static BitmapLayer *s_bitmap_layer;
 static GBitmapSequence *s_sequence = NULL;
 
-static GBitmap *s_f_bitmap = NULL;
-static BitmapLayer *s_f_bitmap_layer;
-static GBitmapSequence *s_f_sequence = NULL;
 
 //changing text (CT)
 static AppSync s_sync;
@@ -31,17 +28,6 @@ static void load_sequence();
 static void timer_handler(void *context) {
   uint32_t next_delay;
 
-  // Advance to the next APNG frame
-  if(gbitmap_sequence_update_bitmap_next_frame(s_f_sequence, s_f_bitmap, &next_delay)) {
-    bitmap_layer_set_bitmap(s_f_bitmap_layer, s_f_bitmap);
-    layer_mark_dirty(bitmap_layer_get_layer(s_f_bitmap_layer));
-
-    // Timer for that delay
-    app_timer_register(next_delay, timer_handler, NULL);
-  } else {
-    // Start again
-    load_sequence();
-  }
   if(gbitmap_sequence_update_bitmap_next_frame(s_sequence, s_bitmap, &next_delay)) {
     bitmap_layer_set_bitmap(s_bitmap_layer, s_bitmap);
     layer_mark_dirty(bitmap_layer_get_layer(s_bitmap_layer));
@@ -64,22 +50,20 @@ static void load_sequence() {
     gbitmap_destroy(s_bitmap);
     s_bitmap = NULL;
   }
-   // Free old data
-  if(s_f_sequence) {
-    gbitmap_sequence_destroy(s_f_sequence);
-    s_f_sequence = NULL;
-  }
-  if(s_f_bitmap) {
-    gbitmap_destroy(s_f_bitmap);
-    s_f_bitmap = NULL;
-  }
-
+  
+  int step_count = (int) health_service_sum_today(HealthMetricStepCount) ;
+  if (step_count < 5){
   // Create sequence
   #ifdef PBL_COLOR
+   s_sequence = gbitmap_sequence_create_with_resource(RESOURCE_ID_SAD);
+  #else
+    #endif
+  }else{
+    #ifdef PBL_COLOR
    s_sequence = gbitmap_sequence_create_with_resource(RESOURCE_ID_ANIMATION_2);
   #else
-  
-  #endif
+    #endif
+  }
 
   // Create GBitmap
   s_bitmap = gbitmap_create_blank(gbitmap_sequence_get_bitmap_size(s_sequence), GBitmapFormat8Bit);
@@ -88,15 +72,7 @@ static void load_sequence() {
   app_timer_register(1, timer_handler, NULL);
  
   // Create sequence flower
-  #ifdef PBL_COLOR
-   s_f_sequence = gbitmap_sequence_create_with_resource(RESOURCE_ID_FLOWER);
-  #else
   
-  #endif
-
-  // Create GBitmap
-  s_f_bitmap = gbitmap_create_blank(gbitmap_sequence_get_bitmap_size(s_f_sequence), GBitmapFormat8Bit);
-
   // Begin animation
   app_timer_register(1, timer_handler, NULL);
 }
@@ -177,10 +153,8 @@ static void main_window_load(Window *window) {
    s_bitmap_layer = bitmap_layer_create(GRect(rockx,PBL_IF_ROUND_ELSE(rocky+5, rocky), bounds.size.w, bounds.size.h));
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bitmap_layer));
   
-  //CHANGE X AND Y
-   s_f_bitmap_layer = bitmap_layer_create(GRect(0,0, bounds.size.w, bounds.size.h));
-  layer_add_child(window_layer, bitmap_layer_get_layer(s_f_bitmap_layer));
-
+    
+  
   load_sequence();
   // Create the canvas Layer
  s_canvas_layer = layer_create(GRect(rockx+52,PBL_IF_ROUND_ELSE(rocky+42, rocky+42), bounds.size.w, bounds.size.h));
@@ -243,7 +217,6 @@ bitmap_layer_destroy(s_background_layer);
   }
   bitmap_layer_destroy(s_icon_layer);
   bitmap_layer_destroy(s_bitmap_layer);
-  bitmap_layer_destroy(s_f_bitmap_layer);
 }
 
 static void update_time() {
@@ -282,12 +255,10 @@ update_time();
   // Register with TickTimerService
 tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
    // Create the object from resource file
-  
-#ifdef PBL_BW
-  s_command_image = gdraw_command_image_create_with_resource(RESOURCE_ID_ROCKFRIEND);
-  #else
-  
-  #endif
+   
+    #ifdef PBL_COLOR
+   s_command_image = gdraw_command_image_create_with_resource(RESOURCE_ID_ROCKFRIEND);
+#endif
 
 }
 
