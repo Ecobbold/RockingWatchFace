@@ -10,6 +10,12 @@
     "resources": {
         "media": [
             {
+                "file": "data/flower thing.png",
+                "name": "FLOWER",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
                 "file": "data/animation-2.png",
                 "name": "ANIMATION_2",
                 "targetPlatforms": null,
