@@ -1,0 +1,44 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Marbleous Productions",
+    "enableMultiJS": true,
+    "longName": "RockinWatchFace",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/simple_home_bw.png",
+                "name": "HOME_BW",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/simple_home.png",
+                "name": "HOME",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "fonts/BluePrinted.ttf",
+                "name": "BLUE_PRINTED_40",
+                "targetPlatforms": null,
+                "type": "font"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "RockinWatchFace",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "2f2995ac-b647-4edf-99aa-bf0e5e8d47f8",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
