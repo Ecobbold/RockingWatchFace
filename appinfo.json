@@ -10,6 +10,30 @@
     "resources": {
         "media": [
             {
+                "file": "images/Rockit.png",
+                "name": "TEXT_ROCKIT",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "fonts/Raleway.ttf",
+                "name": "RALEWAY_45",
+                "targetPlatforms": null,
+                "type": "font"
+            },
+            {
+                "file": "images/yourock_l.png",
+                "name": "TEXT_YOUROCK_L",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/yourock_R.png",
+                "name": "TEXT_YOUROCK_R",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
                 "file": "data/rockfriend.pdc",
                 "name": "ROCKFRIEND",
                 "targetPlatforms": null,
@@ -20,12 +44,6 @@
                 "name": "HOME",
                 "targetPlatforms": null,
                 "type": "bitmap"
-            },
-            {
-                "file": "fonts/BluePrinted.ttf",
-                "name": "BLUE_PRINTED_40",
-                "targetPlatforms": null,
-                "type": "font"
             }
         ]
     },
