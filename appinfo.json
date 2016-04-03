@@ -10,12 +10,6 @@
     "resources": {
         "media": [
             {
-                "file": "images/simple_home_bw.png",
-                "name": "HOME_BW",
-                "targetPlatforms": null,
-                "type": "bitmap"
-            },
-            {
                 "file": "images/simple_home.png",
                 "name": "HOME",
                 "targetPlatforms": null,
