@@ -13,7 +13,7 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
   // Create GBitmap
-s_background_bitmap = gbitmap_create_with_resource((PBL_IF_COLOR_ELSE(RESOURCE_ID_HOME, RESOURCE_ID_HOME_BW)));
+s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_HOME);
 
 // Create BitmapLayer to display the GBitmap
 s_background_layer = bitmap_layer_create(bounds);

@@ -10,6 +10,12 @@
     "resources": {
         "media": [
             {
+                "file": "data/rockfriend.pdc",
+                "name": "ROCKFRIEND",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
                 "file": "images/simple_home.png",
                 "name": "HOME",
                 "targetPlatforms": null,
