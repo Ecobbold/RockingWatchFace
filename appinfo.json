@@ -10,6 +10,18 @@
     "resources": {
         "media": [
             {
+                "file": "data/animation-2.png",
+                "name": "ANIMATION_2",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "images/animation.png",
+                "name": "ANIMATION",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
                 "file": "images/Rockit.png",
                 "name": "TEXT_ROCKIT",
                 "targetPlatforms": null,
